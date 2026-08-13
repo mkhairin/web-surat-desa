@@ -321,77 +321,166 @@ return [
             'can' => 'manage-blog',
         ],
         [
-            'text' => 'pages',
-            'url' => 'admin/pages',
-            'icon' => 'far fa-fw fa-file',
-            'label' => 4,
-            'label_color' => 'success',
+            // 'text' => 'pages',
+            // 'url' => 'admin/pages',
+            // 'icon' => 'far fa-fw fa-file',
+            // 'label' => 4,
+            // 'label_color' => 'success',
         ],
-        ['header' => 'account_settings'],
+        // ['header' => 'menu_pilihan'],
+        // [
+        //     'text' => 'profile',
+        //     'url' => 'admin/settings',
+        //     'icon' => 'fas fa-fw fa-user',
+        // ],
+        // [
+        //     'text' => 'change_password',
+        //     'url' => 'admin/settings',
+        //     'icon' => 'fas fa-fw fa-lock',
+        // ],
+        // [
+        //     'text' => 'multilevel',
+        //     'icon' => 'fas fa-fw fa-share',
+        //     'submenu' => [
+        //         [
+        //             'text' => 'level_one',
+        //             'url' => '#',
+        //         ],
+        //         [
+        //             'text' => 'level_one',
+        //             'url' => '#',
+        //             'submenu' => [
+        //                 [
+        //                     'text' => 'level_two',
+        //                     'url' => '#',
+        //                 ],
+        //                 [
+        //                     'text' => 'level_two',
+        //                     'url' => '#',
+        //                     'submenu' => [
+        //                         [
+        //                             'text' => 'level_three',
+        //                             'url' => '#',
+        //                         ],
+        //                         [
+        //                             'text' => 'level_three',
+        //                             'url' => '#',
+        //                         ],
+        //                     ],
+        //                 ],
+        //             ],
+        //         ],
+        //         [
+        //             'text' => 'level_one',
+        //             'url' => '#',
+        //         ],
+        //     ],
+        // ],
         [
-            'text' => 'profile',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'header' => 'Menu-Pilihan'
         ],
         [
-            'text' => 'change_password',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text' => 'multilevel',
-            'icon' => 'fas fa-fw fa-share',
+            'text' => 'Menu-Surat',
+            'icon' => '#',
             'submenu' => [
                 [
-                    'text' => 'level_one',
+                    'text' => 'Pengajuan Surat',
+                    'icon' => 'fa fa-envelope',
                     'url' => '#',
                 ],
                 [
-                    'text' => 'level_one',
+                    'text' => 'Daftar Surat',
+                    'icon' => 'fa fa-envelope',
                     'url' => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                        ],
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                            ],
-                        ],
-                    ],
                 ],
                 [
-                    'text' => 'level_one',
+                    'text' => 'Riwayat & Arsip Surat',
+                    'icon_color' => 'red',
                     'url' => '#',
                 ],
-            ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text' => 'important',
-            'icon_color' => 'red',
-            'url' => '#',
-        ],
-        [
-            'text' => 'warning',
-            'icon_color' => 'yellow',
-            'url' => '#',
+                [
+                    'text' => 'Persetujuan Surat',
+                    'icon_color' => 'red',
+                    'url' => '#',
+                ],
+            ]
         ],
         [
-            'text' => 'information',
-            'icon_color' => 'cyan',
-            'url' => '#',
+            'text' => 'Menu-Penduduk',
+            'icon' => '',
+            'submenu' => [
+                [
+                    'text' => 'Daftar Penduduk',
+                    'icon' => 'fa fa-user',
+                    'url' => '#',
+                ],
+
+            ]
         ],
+        [
+            'text' => 'Konfigurasi-Surat',
+            'icon' => '',
+            'submenu' => [
+                [
+                    'text' => 'Jenis Surat',
+                    'icon' => 'fas fa-fw fa-share',
+                    'url' => '#',
+                ],
+                [
+                    'text' => 'Template Surat',
+                    'icon' => 'fas fa-fw fa-share',
+                    'url' => '#',
+                ],
+                [
+                    'text' => 'Field Dinamis',
+                    'icon' => 'fas fa-fw fa-share',
+                    'url' => '#',
+                ],
+                [
+                    'text' => 'Format Penomoran',
+                    'icon' => 'fas fa-fw fa-share',
+                    'url' => '#',
+                ],
+
+            ]
+        ],
+        [
+            'text' => 'Pengaturan Sistem & Keamanan',
+            'icon' => '',
+            'submenu' => [
+                [
+                    'text' => 'Pengaturan Umum / Instansi',
+                    'icon' => 'fas fa-fw fa-share',
+                    'url' => '#',
+                ],
+                [
+                    'text' => 'Manajemen Pengguna',
+                    'icon' => 'fas fa-fw fa-share',
+                    'url' => '#',
+                ],
+                [
+                    'text' => 'Log Aktivitas',
+                    'icon' => 'fas fa-fw fa-share',
+                    'url' => '#',
+                ],
+            ]
+        ],
+        [
+            'text' => 'Menu Akun',
+            'icon' => '',
+            'submenu' => [
+                [
+                    'text' => 'Profile',
+                    'icon' => '',
+                    'url' => '#'
+                ],
+                [
+                    'text' => 'Logout',
+                    'icon' => '',
+                    'url' => '#'
+                ],
+            ]
+        ]
     ],
 
     /*
@@ -546,5 +635,5 @@ return [
     |
     */
 
-    'livewire' => false,
+    'livewire' => true,
 ];

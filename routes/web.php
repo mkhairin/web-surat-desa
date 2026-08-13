@@ -7,3 +7,4 @@ Route::get('/', function () {
 });
 
 Route::livewire('/dashboard', 'contoh-komponen')->name('dashboard');
+Route::livewire('/dashboard/post', 'post')->name('dashboard.post');
