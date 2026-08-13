@@ -381,11 +381,11 @@ return [
         ],
         [
             'text' => 'Menu-Surat',
-            'icon' => '#',
+            'icon' => 'fa fa-envelope',
             'submenu' => [
                 [
                     'text' => 'Pengajuan Surat',
-                    'icon' => 'fa fa-envelope',
+                    'icon' => 'fa fa-circle-thin',
                     'url' => '#',
                 ],
                 [

@@ -6,6 +6,7 @@ use Livewire\Attributes\Layout;
 // Menentukan layout mana yang akan digunakan oleh full-page component ini
 new class extends Component {
     public int $angka = 0;
+    public $name = '';
 
     public function tambah()
     {
@@ -15,6 +16,11 @@ new class extends Component {
     public function kurang()
     {
         $this->angka--;
+    }
+
+    public function nama()
+    {
+        $this->name = 'Khairin';
     }
 };
 ?>
@@ -38,6 +44,12 @@ new class extends Component {
                 Tambah Angka
             </button>
             <button wire:click="kurang" class ="btn btn-danger">Kurang Angka</button>
+        </div>
+        <div class="card-body">
+            <p>Klik saat ini: <strong>{{ $name }}</strong></p>
+            <button wire:click="nama" class="btn btn-primary">
+                Tampilkan Nama
+            </button>
         </div>
     </div>
 </div>
