@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('template_surat', function (Blueprint $table) {
             $table->id();
             $table->foreignId('jenis_surat_id');
-            $table->varchar('nama');
+            $table->varchar('nama_surat');
             $table->longText('template');
             $table->varchar('version');
             $table->boolean('is_active');

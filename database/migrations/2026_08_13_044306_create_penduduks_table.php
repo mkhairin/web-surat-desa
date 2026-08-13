@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->varchar('nik')->unique();
             $table->varchar('no_kk');
-            $table->varchar('name');
+            $table->varchar('nama_lengkap');
             $table->varchar('tempat_lahir');
             $table->date('tanggal_lahir');
             $table->varchar('jenis_kelamin');
