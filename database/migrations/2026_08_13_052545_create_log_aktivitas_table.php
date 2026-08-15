@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('log_aktivitas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->nullOnDelete();
-            $table->varchar('email', length: 50);
+            $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
+            $table->string('email', length: 50);
             $table->text('activity');
             $table->timestamps();
         });

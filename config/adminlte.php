@@ -380,28 +380,13 @@ return [
             'header' => 'Menu-Pilihan'
         ],
         [
-            'text' => 'Menu-Surat',
+            'text' => 'Dashboard',
             'icon' => 'fa fa-envelope',
             'submenu' => [
                 [
-                    'text' => 'Pengajuan Surat',
+                    'text' => 'Overview',
                     'icon' => 'fa fa-circle-thin',
-                    'url' => '#',
-                ],
-                [
-                    'text' => 'Daftar Surat',
-                    'icon' => 'fa fa-envelope',
-                    'url' => '#',
-                ],
-                [
-                    'text' => 'Riwayat & Arsip Surat',
-                    'icon_color' => 'red',
-                    'url' => '#',
-                ],
-                [
-                    'text' => 'Persetujuan Surat',
-                    'icon_color' => 'red',
-                    'url' => '#',
+                    'url' => '/dashboard',
                 ],
             ]
         ],
