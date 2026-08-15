@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('pengaturan', function (Blueprint $table) {
             $table->id();
-            $table->varchar('key')->unique();
+            $table->string('key_name', length: 100)->unique();
             $table->text('value');
             $table->timestamps();
         });

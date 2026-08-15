@@ -17,4 +17,14 @@ class FieldSurat extends Model
         'is_required',
         'sort_order'
     ];
+
+    protected $casts = [
+        'is_required' => 'boolean',
+        'sort_order' => 'integer'
+    ];
+
+    public function jenisSurat()
+    {
+        return $this->belongsTo(JenisSurat::class, 'jenis_surat_id');
+    }
 }

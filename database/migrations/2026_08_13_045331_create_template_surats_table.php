@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('template_surat', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('jenis_surat_id');
-            $table->varchar('nama_surat');
+            $table->foreignId('jenis_surat_id')->constrained('jenis_surat')->restrictOnDelete();
+            $table->string('nama_template', length: 250);
             $table->longText('template');
-            $table->varchar('version');
-            $table->boolean('is_active');
+            $table->unsignedInteger('version')->unique();
+            $table->boolean('is_active')->default(true);
+             $table->unique(['jenis_surat_id', 'version']);
             $table->timestamps();
         });
     }

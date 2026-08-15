@@ -13,17 +13,17 @@ return new class extends Migration
     {
         Schema::create('surat', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('penduduk_id');
-            $table->foreignId('jenis_surat_id');
-            $table->foreignId('template_surat_id');
-            $table->varchar('nomor_surat');
-            $table->varchar('status');
+            $table->foreignId('penduduk_id')->constrained('penduduk')->restrictOnDelete();
+            $table->foreignId('jenis_surat_id')->constrained('jenis_surat')->restrictOnDelete();
+            $table->foreignId('template_surat_id')->constrained('template_surat')->restrictOnDelete();
+            $table->varchar('nomor_surat', length: 50);
+            $table->varchar('status', length: 20);
             $table->date('tanggal_terbit');
-            $table->foreignId('dibuat_oleh');
-            $table->foreignId('disetujui_oleh');
+            $table->foreignId('dibuat_oleh')->constrained('users')->restrictOnDelete();
+            $table->foreignId('disetujui_oleh')->nullable()->constrained('users')->nullOnDelete();
             $table->json('data_surat');
-            $table->varchar('file_pdf');
-            $table->varchar('catatan');
+            $table->varchar('file_pdf', length: 500);
+            $table->varchar('catatan', length: 2000)->nullable();
             $table->timestamps();
         });
     }

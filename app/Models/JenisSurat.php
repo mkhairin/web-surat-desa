@@ -15,4 +15,28 @@ class JenisSurat extends Model
         'deskripsi_surat',
         'is_active'
     ];
+
+    protected $casts = [
+        'is_active' => 'boolean'
+    ];
+
+    public function fields()
+    {
+        return $this->hasMany(FieldSurat::class, 'jenis_surat_id');
+    }
+
+    public function templates()
+    {
+        return $this->hasMany(TemplateSurat::class, 'jenis_surat_id');
+    }
+
+    public function formatNomorSurat()
+    {
+        return $this->hasMany(FormatNomorSurat::class, 'jenis_surat_id');
+    }
+
+    public function surat()
+    {
+        return $this->hasMany(Surat::class, 'jenis_surat_id');
+    }
 }

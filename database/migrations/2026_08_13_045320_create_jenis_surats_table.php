@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('jenis_surat', function (Blueprint $table) {
             $table->id();
-            $table->varchar('kode_surat')->unique();
-            $table->varchar('nama_surat');
-            $table->text('deskripsi_surat');
-            $table->boolean('is_active');
+            $table->string('kode_surat', length: 10)->unique();
+            $table->string('nama_surat', length: 50);
+            $table->text('deskripsi_surat')->nullable();
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
