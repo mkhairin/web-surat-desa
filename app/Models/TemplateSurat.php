@@ -9,6 +9,8 @@ class TemplateSurat extends Model
 {
     use HasFactory;
 
+    protected $table = 'template_surat';
+
     protected $fillable = [
         'jenis_surat_id',
         'nama_template',

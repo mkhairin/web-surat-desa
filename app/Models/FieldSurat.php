@@ -9,6 +9,8 @@ class FieldSurat extends Model
 {
     use HasFactory;
 
+    protected $table = 'field_surat';
+
     protected $fillable = [
         'jenis_surat_id',
         'field_name',

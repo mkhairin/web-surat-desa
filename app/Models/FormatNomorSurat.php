@@ -9,6 +9,8 @@ class FormatNomorSurat extends Model
 {
     use HasFactory;
 
+    protected $table = 'format_nomor_surat';
+
     protected $fillable = [
         'jenis_surat_id',
         'format',
