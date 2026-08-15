@@ -397,7 +397,7 @@ return [
                 [
                     'text' => 'Daftar Penduduk',
                     'icon' => 'fa fa-user',
-                    'url' => '#',
+                    'url' => '/penduduk',
                 ],
 
             ]
