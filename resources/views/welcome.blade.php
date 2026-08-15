@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+{{-- @extends('adminlte::page')
 
 @section('title', 'Dashboard Livewire')
 
@@ -19,4 +19,4 @@
 @section('js')
     <!-- Memuat script Livewire -->
     @livewireScripts
-@stop
+@stop --}}
