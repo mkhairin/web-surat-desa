@@ -40,10 +40,14 @@
                         </div>
 
                         <div class="col-md-6 text-md-right mt-2 mt-md-0">
-                            <a {{-- href="{{ route('penduduk.create') }}"  --}} href="#" class="btn btn-primary">
+                            <button type="button" class="btn btn-primary" wire:click="$dispatch('open-penduduk-form')">
                                 <i class="fas fa-plus mr-1"></i>
                                 Tambah Penduduk
-                            </a>
+                            </button>
+                            {{-- <a href="{{ route('penduduk.create') }}" href="#" class="btn btn-primary">
+                                <i class="fas fa-plus mr-1"></i>
+                                Tambah Penduduk
+                            </a> --}}
                         </div>
 
                     </div>
@@ -121,10 +125,11 @@
                                                 </a>
 
                                                 {{-- Edit --}}
-                                                <a {{-- href="{{ route('penduduk.edit', $item) }}" --}} href="#" class="btn btn-sm btn-warning"
+                                                <button type="button" class="btn btn-sm btn-warning"
+                                                    wire:click="$dispatch('edit-penduduk', { id: {{ $item->id }} })"
                                                     title="Edit">
                                                     <i class="fas fa-edit"></i>
-                                                </a>
+                                                </button>
 
                                             </div>
                                         </td>
@@ -162,4 +167,7 @@
 
         </div>
     </section>
+
+    {{-- Form Modal --}}
+    <livewire:penduduk.form />
 </div>

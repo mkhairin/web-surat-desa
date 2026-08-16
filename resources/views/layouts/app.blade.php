@@ -15,3 +15,19 @@
     <!-- Memuat script Livewire -->
     @livewireScripts
 @stop
+
+@livewireScripts
+
+<script>
+    document.addEventListener('livewire:init', () => {
+
+        Livewire.on('show-penduduk-modal', () => {
+            $('#pendudukModal').modal('show');
+        });
+
+        Livewire.on('hide-penduduk-modal', () => {
+            $('#pendudukModal').modal('hide');
+        });
+
+    });
+</script>
