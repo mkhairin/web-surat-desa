@@ -5,6 +5,11 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0">Penduduk</h1>
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
                 </div>
 
                 <div class="col-sm-6">
@@ -74,7 +79,7 @@
 
                     {{-- Table --}}
                     <div class="table-responsive">
-                        <table class="table table-bordered table-hover">
+                        <table class="table table-sm table-striped table-hover">
                             <thead>
                                 <tr>
                                     <th width="5%">No</th>
@@ -82,6 +87,7 @@
                                     <th>No. KK</th>
                                     <th>Nama Lengkap</th>
                                     <th>Jenis Kelamin</th>
+                                    <th>Agama</th>
                                     <th>No. Telepon</th>
                                     <th width="15%">Aksi</th>
                                 </tr>
@@ -109,6 +115,10 @@
 
                                         <td>
                                             {{ ucfirst($item->jenis_kelamin) }}
+                                        </td>
+
+                                        <td>
+                                            {{ ucfirst($item->agama) }}
                                         </td>
 
                                         <td>
@@ -159,7 +169,12 @@
                 {{-- Card Footer --}}
                 @if ($penduduk->hasPages())
                     <div class="card-footer">
-                        {{ $penduduk->links() }}
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination pagination-sm">
+                                <li class="page-item"><a
+                                        class="page-link">{{ $penduduk->links(data: ['scrollTo' => true]) }}</a></li>
+                            </ul>
+                        </nav>
                     </div>
                 @endif
 

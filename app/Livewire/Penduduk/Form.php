@@ -71,7 +71,7 @@ class Form extends Component
     #[Validate('required|string|max:20')]
     public string $no_telp = '';
 
-    public string $email = '';
+    public ?string $email = null;
 
     #[On('open-penduduk-form')]
     public function create(): void
@@ -94,7 +94,6 @@ class Form extends Component
 
     public function save(): void
     {
-        dd('SAVE BERHASIL DIPANGGIL');
         $validated = $this->validate();
 
         if ($this->penduduk) {

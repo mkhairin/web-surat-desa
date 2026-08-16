@@ -6,10 +6,11 @@ use App\Models\Penduduk as PendudukModel;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Livewire\WithoutUrlPagination;
 
 class Index extends Component
 {
-    use WithPagination;
+    use WithPagination, WithoutUrlPagination;
 
     #[Url]
     public string $search = '';
@@ -27,8 +28,8 @@ class Index extends Component
                     ->orWhere('no_kk', 'like', '%' . $this->search . '%')
                     ->orWhere('nama_lengkap', 'like', '%' . $this->search . '%');
             });
-        })->orderBy('nama_lengkap')->paginate(15);
-        
+        })->orderBy('nama_lengkap')->simplePaginate(7);
+
         return view('livewire.penduduk.index', ['penduduk' => $penduduk]);
     }
 }
