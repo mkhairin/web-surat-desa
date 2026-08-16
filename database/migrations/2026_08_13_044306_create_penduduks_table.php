@@ -39,6 +39,7 @@ return new class extends Migration
             $table->string('kode_pos', length: 5);
             $table->string('no_telp', length: 20);
             $table->string('email', length: 100)->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
