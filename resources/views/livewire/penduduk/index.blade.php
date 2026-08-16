@@ -26,9 +26,16 @@
         <div class="container-fluid">
 
             {{-- Alert Notifikasi --}}
-            @if (session('status'))
+            @if (session('success'))
                 <div class="alert alert-success alert-dismissible fade show shadow-sm border-0" role="alert">
-                    <i class="fas fa-check-circle mr-2"></i> {{ session('status') }}
+                    <i class="fas fa-check-circle mr-2"></i> {{ session('success') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @else
+                <div class="alert alert-danger alert-dismissible fade show shadow-sm border-0" role="alert">
+                    <i class="fas fa-check-circle mr-2"></i> {{ session('error') }}
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -115,6 +122,12 @@
                                                 data-toggle="tooltip" title="Edit Data">
                                                 <i class="fas fa-edit text-dark"></i>
                                             </button>
+
+                                            {{-- Delete --}}
+                                            <button type="button" class="btn btn-sm btn-danger"
+                                                wire:click="confirmDelete({{ $item->id }})" title="Hapus">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
                                         </td>
                                     </tr>
                                 @empty
@@ -149,6 +162,80 @@
             </div>
         </div>
     </section>
+
+    {{-- Delete Confirmation Modal --}}
+    <div wire:ignore.self class="modal fade" id="deletePendudukModal" tabindex="-1" role="dialog"
+        aria-labelledby="deletePendudukModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+
+            <div class="modal-content">
+
+                <div class="modal-header bg-danger">
+
+                    <h5 class="modal-title text-white" id="deletePendudukModalLabel">
+                        Konfirmasi Hapus
+                    </h5>
+
+                    <button type="button" class="close text-white" wire:click="cancelDelete" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="text-center">
+
+                        <i class="fas fa-exclamation-triangle text-warning fa-3x mb-3"></i>
+
+                        <p>
+                            Apakah Anda yakin ingin menghapus data penduduk:
+                        </p>
+
+                        @if ($pendudukToDelete)
+                            <h5 class="font-weight-bold">
+                                {{ $pendudukToDelete->nama_lengkap }}
+                            </h5>
+
+                            <p class="text-muted mb-0">
+                                NIK: {{ $pendudukToDelete->nik }}
+                            </p>
+                        @endif
+
+                        <p class="text-muted mt-3 mb-0">
+                            Data yang dihapus tidak akan ditampilkan
+                            pada daftar penduduk.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-secondary" wire:click="cancelDelete">
+                        Batal
+                    </button>
+
+                    <button type="button" class="btn btn-danger" wire:click="delete" wire:loading.attr="disabled"
+                        wire:target="delete">
+                        <span wire:loading.remove wire:target="delete">
+                            <i class="fas fa-trash mr-1"></i>
+                            Ya, Hapus
+                        </span>
+
+                        <span wire:loading wire:target="delete">
+                            <i class="fas fa-spinner fa-spin mr-1"></i>
+                            Menghapus...
+                        </span>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
 
     {{-- Form Modal --}}
     <livewire:penduduk.form />

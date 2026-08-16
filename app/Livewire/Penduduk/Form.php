@@ -100,17 +100,23 @@ class Form extends Component
             $this->penduduk->update($validated);
 
             $message = 'Data penduduk berhasil diperbarui.';
+            $errorMessage = 'Data penduduk gagal diperbarui.';
         } else {
             Penduduk::create($validated);
 
             $message = 'Data penduduk berhasil ditambahkan.';
+            $errorMessage = 'Data penduduk gagal ditambahkan.';
         }
 
         $this->dispatch('hide-penduduk-modal');
 
         $this->dispatch('penduduk-saved');
 
-        session()->flash('success', $message);
+        if ($this->penduduk == true) {
+            session()->flash('success', $message);
+        } else {
+            session()->flash('error', $errorMessage);
+        }
     }
 
     public function close(): void

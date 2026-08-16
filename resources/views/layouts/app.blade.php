@@ -29,5 +29,14 @@
             $('#pendudukModal').modal('hide');
         });
 
+        Livewire.on('show-delete-penduduk-modal', () => {
+            $('#deletePendudukModal').modal('show');
+        });
+
+        Livewire.on('hide-delete-penduduk-modal', () => {
+            $('#deletePendudukModal').modal('hide');
+        });
+
+
     });
 </script>

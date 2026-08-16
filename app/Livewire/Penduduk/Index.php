@@ -15,9 +15,49 @@ class Index extends Component
     #[Url]
     public string $search = '';
 
+    public ?PendudukModel $pendudukToDelete = null;
+
+    public bool $showDeleteModal = false;
+
     public function updateSearch(): void
     {
         $this->resetPage();
+    }
+
+    public function confirmDelete(int $id): void
+    {
+        $this->pendudukToDelete = PendudukModel::findOrFail($id);
+
+        $this->showDeleteModal = true;
+        $this->dispatch('show-delete-penduduk-modal');
+    }
+
+    public function cancelDelete(): void
+    {
+        $this->pendudukToDelete = null;
+        $this->showDeleteModal = false;
+        $this->dispatch('hide-delete-penduduk-modal');
+    }
+
+    public function delete(): void
+    {
+        if (!$this->pendudukToDelete) {
+            return;
+        }
+        $nama = $this->pendudukToDelete->nama_lengkap;
+
+        $this->pendudukToDelete->delete();
+
+        $this->pendudukToDelete = null;
+
+        $this->showDeleteModal = false;
+
+        $this->dispatch('hide-delete-penduduk-modal');
+
+        session()->flash(
+            'success',
+            "Data penduduk {$nama} berhasil dihapus."
+        );
     }
 
     public function render()
