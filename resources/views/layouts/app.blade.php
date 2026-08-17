@@ -38,5 +38,14 @@
         });
 
 
+        // Jenis Surat
+        Livewire.on('show-jenis-surat-modal', () => {
+            $('#jenisSuratModal').modal('show');
+        });
+
+        Livewire.on('hide-jenis-surat-modal', () => {
+            $('#jenisSuratModal').modal('hide');
+        });
+
     });
 </script>
