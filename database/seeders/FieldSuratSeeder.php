@@ -36,6 +36,7 @@ class FieldSuratSeeder extends Seeder
                 'Lainnya',
             ],
             'is_required' => true,
+            'is_active' => true,
             'sort_order' => 1,
         ]);
 
@@ -46,6 +47,7 @@ class FieldSuratSeeder extends Seeder
             'field_type' => 'number',
             'field_options' => null,
             'is_required' => true,
+            'is_active' => true,
             'sort_order' => 2,
         ]);
 
@@ -56,6 +58,7 @@ class FieldSuratSeeder extends Seeder
             'field_type' => 'number',
             'field_options' => null,
             'is_required' => true,
+            'is_active' => true,
             'sort_order' => 3,
         ]);
 
@@ -73,6 +76,7 @@ class FieldSuratSeeder extends Seeder
             'field_type' => 'text',
             'field_options' => null,
             'is_required' => true,
+            'is_active' => true,
             'sort_order' => 1,
         ]);
 
@@ -90,6 +94,7 @@ class FieldSuratSeeder extends Seeder
                 'Lainnya',
             ],
             'is_required' => true,
+            'is_active' => true,
             'sort_order' => 2,
         ]);
 
@@ -100,6 +105,7 @@ class FieldSuratSeeder extends Seeder
             'field_type' => 'textarea',
             'field_options' => null,
             'is_required' => true,
+            'is_active' => true,
             'sort_order' => 3,
         ]);
 
@@ -115,6 +121,7 @@ class FieldSuratSeeder extends Seeder
                 'Peralatan',
             ],
             'is_required' => false,
+            'is_active' => true,
             'sort_order' => 4,
         ]);
 
@@ -132,6 +139,7 @@ class FieldSuratSeeder extends Seeder
             'field_type' => 'textarea',
             'field_options' => null,
             'is_required' => true,
+            'is_active' => true,
             'sort_order' => 1,
         ]);
 
@@ -147,6 +155,7 @@ class FieldSuratSeeder extends Seeder
                 'Menumpang',
             ],
             'is_required' => true,
+            'is_active' => true,
             'sort_order' => 2,
         ]);
     }

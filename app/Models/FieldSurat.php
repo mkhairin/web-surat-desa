@@ -18,6 +18,7 @@ class FieldSurat extends Model
         'field_type',
         'field_options',
         'is_required',
+        'is_active',
         'sort_order'
     ];
 
