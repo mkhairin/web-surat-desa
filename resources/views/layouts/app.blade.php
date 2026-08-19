@@ -19,6 +19,41 @@
 @livewireScripts
 
 <script>
+    function insertFormatPlaceholder(placeholder) {
+
+        const input = document.getElementById('format');
+
+        if (!input) {
+            return;
+        }
+
+        const start = input.selectionStart;
+        const end = input.selectionEnd;
+
+        const value = input.value;
+
+        input.value =
+            value.substring(0, start) +
+            placeholder +
+            value.substring(end);
+
+        const cursorPosition =
+            start + placeholder.length;
+
+        input.setSelectionRange(
+            cursorPosition,
+            cursorPosition
+        );
+
+        input.focus();
+
+        input.dispatchEvent(
+            new Event('input', {
+                bubbles: true
+            })
+        );
+    }
+
     document.addEventListener('livewire:init', () => {
 
         Livewire.on('show-penduduk-modal', () => {
@@ -57,5 +92,13 @@
             $('#fieldSuratModal').modal('hide');
         });
 
+        // Format Nomor Surat
+        Livewire.on('show-format-nomor-surat-modal', () => {
+            $('#formatNomorSuratModal').modal('show');
+        });
+
+        Livewire.on('hide-format-nomor-surat-modal', () => {
+            $('#formatNomorSuratModal').modal('hide');
+        });
     });
 </script>

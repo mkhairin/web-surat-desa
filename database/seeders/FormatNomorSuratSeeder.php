@@ -70,7 +70,7 @@ class FormatNomorSuratSeeder extends Seeder
         */
 
         FormatNomorSuratModel::create([
-            'jenis_suratr_id' => $skd->id,
+            'jenis_surat_id' => $skd->id,
             'format' => '{nomor}/SKD/{bulan_romawi}/{tahun}',
             'current_number' => 21,
             'year' => 2026,

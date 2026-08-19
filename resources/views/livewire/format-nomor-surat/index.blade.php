@@ -60,11 +60,8 @@
 
                         <div class="col-md-6 text-md-right mt-2 mt-md-0">
 
-                            <button
-                                type="button"
-                                class="btn btn-primary"
-                                wire:click="$dispatch('open-format-nomor-surat-form')"
-                            >
+                            <button type="button" class="btn btn-primary"
+                                wire:click="$dispatch('open-format-nomor-surat-form')">
                                 <i class="fas fa-plus mr-1"></i>
                                 Tambah Format
                             </button>
@@ -89,24 +86,18 @@
                                 Jenis Surat
                             </label>
 
-                            <select
-                                id="jenisSuratId"
-                                wire:model.live="jenisSuratId"
-                                class="form-control"
-                            >
+                            <select id="jenisSuratId" wire:model.live="jenisSuratId" class="form-control">
 
                                 <option value="">
                                     Semua Jenis Surat
                                 </option>
 
                                 @foreach ($jenisSurat as $jenis)
-
                                     <option value="{{ $jenis->id }}">
                                         {{ $jenis->kode_surat }}
                                         -
                                         {{ $jenis->nama_surat }}
                                     </option>
-
                                 @endforeach
 
                             </select>
@@ -121,22 +112,16 @@
                                 Tahun
                             </label>
 
-                            <select
-                                id="year"
-                                wire:model.live="year"
-                                class="form-control"
-                            >
+                            <select id="year" wire:model.live="year" class="form-control">
 
                                 <option value="">
                                     Semua Tahun
                                 </option>
 
                                 @foreach ($years as $itemYear)
-
                                     <option value="{{ $itemYear }}">
                                         {{ $itemYear }}
                                     </option>
-
                                 @endforeach
 
                             </select>
@@ -153,13 +138,8 @@
 
                             <div class="input-group">
 
-                                <input
-                                    type="text"
-                                    id="search"
-                                    wire:model.live.debounce.300ms="search"
-                                    class="form-control"
-                                    placeholder="Cari format nomor surat..."
-                                >
+                                <input type="text" id="search" wire:model.live.debounce.300ms="search"
+                                    class="form-control" placeholder="Cari format nomor surat...">
 
                                 <div class="input-group-append">
 
@@ -179,7 +159,7 @@
                     {{-- Table --}}
                     <div class="table-responsive">
 
-                        <table class="table table-bordered table-hover">
+                        <table class="table table-sm table-bordered table-hover">
 
                             <thead>
 
@@ -221,7 +201,6 @@
                             <tbody>
 
                                 @forelse ($formatNomorSurat as $item)
-
                                     <tr wire:key="format-nomor-{{ $item->id }}">
 
                                         {{-- No --}}
@@ -276,17 +255,13 @@
                                         <td>
 
                                             @if ($item->is_active)
-
                                                 <span class="badge badge-success">
                                                     Aktif
                                                 </span>
-
                                             @else
-
                                                 <span class="badge badge-secondary">
                                                     Tidak Aktif
                                                 </span>
-
                                             @endif
 
                                         </td>
@@ -298,25 +273,21 @@
                                             <div class="btn-group">
 
                                                 {{-- Edit --}}
-                                                <button
-                                                    type="button"
-                                                    class="btn btn-sm btn-warning"
+                                                <button type="button" class="btn btn-sm btn-warning"
                                                     wire:click="$dispatch('edit-format-nomor-surat', { id: {{ $item->id }} })"
-                                                    title="Edit"
-                                                >
+                                                    title="Edit">
                                                     <i class="fas fa-edit"></i>
                                                 </button>
 
 
                                                 {{-- Toggle Status --}}
-                                                <button
-                                                    type="button"
+                                                <button type="button"
                                                     class="btn btn-sm {{ $item->is_active ? 'btn-danger' : 'btn-success' }}"
                                                     wire:click="toggleStatus({{ $item->id }})"
-                                                    title="{{ $item->is_active ? 'Nonaktifkan' : 'Aktifkan' }}"
-                                                >
+                                                    title="{{ $item->is_active ? 'Nonaktifkan' : 'Aktifkan' }}">
 
-                                                    <i class="fas {{ $item->is_active ? 'fa-toggle-off' : 'fa-toggle-on' }}"></i>
+                                                    <i
+                                                        class="fas {{ $item->is_active ? 'fa-toggle-off' : 'fa-toggle-on' }}"></i>
 
                                                 </button>
 
@@ -330,16 +301,11 @@
 
                                     <tr>
 
-                                        <td
-                                            colspan="7"
-                                            class="text-center"
-                                        >
+                                        <td colspan="7" class="text-center">
 
                                             <div class="py-4">
 
-                                                <i
-                                                    class="fas fa-sort-numeric-down fa-2x text-muted mb-2"
-                                                ></i>
+                                                <i class="fas fa-sort-numeric-down fa-2x text-muted mb-2"></i>
 
                                                 <p class="mb-0 text-muted">
                                                     Belum ada format nomor surat.
@@ -350,7 +316,6 @@
                                         </td>
 
                                     </tr>
-
                                 @endforelse
 
                             </tbody>
@@ -364,13 +329,11 @@
 
                 {{-- Pagination --}}
                 @if ($formatNomorSurat->hasPages())
-
                     <div class="card-footer">
 
                         {{ $formatNomorSurat->links() }}
 
                     </div>
-
                 @endif
 
             </div>
@@ -381,6 +344,6 @@
 
 
     {{-- Form --}}
-    {{-- <livewire:format-nomor-surat.form /> --}}
+    <livewire:format-nomor-surat.form />
 
 </div>
