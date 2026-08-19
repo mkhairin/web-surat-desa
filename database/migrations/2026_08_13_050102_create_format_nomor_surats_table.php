@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('format_nomor_surat', function (Blueprint $table) {
             $table->id();
             $table->foreignId('jenis_surat_id')->constrained('jenis_surat')->restrictOnDelete();
-            $table->string('format', length: 100);
+            $table->string('format', length: 255);
             $table->unsignedInteger('current_number')->default(0);
-            $table->unsignedSmallInteger('year');
-            $table->unique(['jenis_surat_id', 'year']);
+            $table->year('year');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
+            $table->unique(['jenis_surat_id', 'year'], 'format_nomor_surat_jenis_year_unique');
         });
     }
 

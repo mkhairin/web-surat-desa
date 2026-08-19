@@ -29,7 +29,10 @@ return new class extends Migration
             $table->boolean('is_required')->default(true);
             $table->boolean('is_active')->default(true);
             $table->unsignedInteger('sort_order')->default(0);
-            $table->unique(['jenis_surat_id', 'field_name']);
+            $table->unique(
+                ['jenis_surat_id', 'field_name'],
+                'field_surat_jenis_field_unique'
+            );
             $table->timestamps();
         });
     }

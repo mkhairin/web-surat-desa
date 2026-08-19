@@ -14,12 +14,15 @@ class FormatNomorSurat extends Model
     protected $fillable = [
         'jenis_surat_id',
         'format',
-        'current_number'
+        'current_number',
+        'year',
+        'is_active',
     ];
 
     protected $casts = [
         'current_number' => 'integer',
-        'year' => 'integer'
+        'year' => 'integer',
+        'is_active' => 'boolean'
     ];
 
 
