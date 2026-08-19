@@ -25,6 +25,7 @@ class FieldSurat extends Model
     protected $casts = [
         'field_options' => 'array',
         'is_required' => 'boolean',
+        'is_active' => 'boolean',
         'sort_order' => 'integer'
     ];
 
