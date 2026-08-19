@@ -336,3 +336,48 @@
     </div>
 
 </div>
+
+<script>
+    function insertFormatPlaceholder(placeholder) {
+
+        const input = document.getElementById('format');
+
+        if (!input) {
+            return;
+        }
+
+        const start = input.selectionStart;
+        const end = input.selectionEnd;
+
+        const value = input.value;
+
+        let separator = '';
+
+        if (value.length > 0 && !value.endsWith('/')) {
+            separator = '/';
+        }
+
+        const insertedText = separator + placeholder;
+
+        input.value =
+            value.substring(0, start) +
+            insertedText +
+            value.substring(end);
+
+        const cursorPosition =
+            start + insertedText.length;
+
+        input.setSelectionRange(
+            cursorPosition,
+            cursorPosition
+        );
+
+        input.focus();
+
+        input.dispatchEvent(
+            new Event('input', {
+                bubbles: true
+            })
+        );
+    }
+</script>
