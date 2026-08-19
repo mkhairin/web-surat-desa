@@ -24,7 +24,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             PendudukSeeder::class,
-            JenisSuratSeeder::class
+            JenisSuratSeeder::class,
+            FieldSuratSeeder::class
         ]);
     }
 }

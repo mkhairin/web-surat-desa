@@ -13,16 +13,19 @@ return new class extends Migration
     {
         Schema::create('field_surat', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('jenis_surat_id')->constrained('jenis_surat')->restrictOnDelete();
+            $table->foreignId('jenis_surat_id')->constrained('jenis_surat')->cascadeOnDelete();
             $table->string('field_name', length: 100);
             $table->string('field_label', length: 100);
             $table->enum('field_type', [
                 'text',
+                'textarea',
                 'number',
                 'date',
-                'textarea',
                 'select',
+                'radio',
+                'checkbox',
             ]);
+            $table->json('field_options')->nullable();
             $table->boolean('is_required')->default(true);
             $table->unsignedInteger('sort_order')->default(0);
             $table->unique(['jenis_surat_id', 'field_name']);

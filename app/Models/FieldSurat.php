@@ -16,11 +16,13 @@ class FieldSurat extends Model
         'field_name',
         'field_label',
         'field_type',
+        'field_options',
         'is_required',
         'sort_order'
     ];
 
     protected $casts = [
+        'field_options' => 'array',
         'is_required' => 'boolean',
         'sort_order' => 'integer'
     ];
