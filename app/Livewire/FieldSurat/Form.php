@@ -5,41 +5,32 @@ namespace App\Livewire\FieldSurat;
 use App\Models\FieldSurat as FieldSuratModel;
 use App\Models\JenisSurat as JenisSuratModel;
 use Livewire\Attributes\On;
-use Livewire\Attributes\Validate;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 
 class Form extends Component
 {
-    // Menyimpan data field surat yang sedang diedit.
     public ?FieldSuratModel $fieldSurat = null;
 
-    // Menyimpan ID jenis surat yang dipilih.
-    #[Validate('required|exists:jenis_surat,id')]
+    // #[Validate('required|exists:jenis_surat,id')]
     public string $jenis_surat_id = '';
 
-    // Menyimpan nama teknis field surat.
-    #[Validate('required|string|max:100')]
+    // #[Validate('required|string|max:100')]
     public string $field_name = '';
 
-    // Menyimpan label yang ditampilkan untuk field surat.
-    #[Validate('required|string|max:100')]
+    // #[Validate('required|string|max:100')]
     public string $field_label = '';
 
-    // Menyimpan tipe input field surat.
-    #[Validate('required|in:text,textarea,number,select,date,checkbox,radio')]
+    // #[Validate('required|in:text,textarea,number,select,date,checkbox,radio')]
     public string $field_type = 'text';
 
-    // Menyimpan pilihan untuk tipe field select, radio, dan checkbox.
     public array $field_options = [];
 
-    // Menentukan apakah field surat wajib diisi.
     public bool $is_required = true;
 
-    // Menentukan apakah field surat sedang aktif.
     public bool $is_active = true;
 
-    // Menentukan urutan tampilan field surat.
-    #[Validate('required|integer|min:0')]
+    // #[Validate('required|integer|min:0')]
     public int $sort_order = 1;
 
     // Membuka form kosong untuk membuat field surat baru.
@@ -64,29 +55,66 @@ class Form extends Component
     // Memvalidasi dan menyimpan data field surat.
     public function save(): void
     {
-        $this->validate();
+        $rules = [
+            'jenis_surat_id' => ['required', 'exists:jenis_surat,id'],
+            'field_name' => [
+                'required',
+                'string',
+                'regex:/^[a-z][a-z0-9_]*$/',
+                Rule::unique('field_surat', 'field_name')->where(fn($query) => $query->where('jenis_surat_id', $this->jenis_surat_id)->ignore($this->fieldSurat?->id))
+            ],
+            'field_label' => [
+                'required',
+                'string',
+                'max:100',
+            ],
 
-        if (!in_array($this->field_type, ['select', 'radio', 'checkbox'])) {
+            'field_type' => [
+                'required',
+                'in:text,textarea,number,date,select,radio,checkbox',
+            ],
+
+            'sort_order' => [
+                'required',
+                'integer',
+                'min:0',
+            ],
+        ];
+
+        $validated = $this->validate($rules);
+        // Field yang tidak membutuhkan options
+        if (!in_array($this->field_type, [
+            'select',
+            'radio',
+            'checkbox',
+        ])) {
             $this->field_options = [];
         }
 
+        // Bersihkan option kosong
         $this->field_options = array_values(
             array_filter(
                 $this->field_options,
-                // Memastikan pilihan kosong tidak ikut disimpan.
                 fn($option) => trim($option) !== ''
             )
         );
 
-        if (in_array($this->field_type, [
-            'select',
-            'radio',
-            'checkbox'
-        ]) && empty($this->field_options)) {
-            $this->addError('field_options', 'Field options cannot be empty for the selected field type.');
+        // Validasi options
+        if (
+            in_array($this->field_type, [
+                'select',
+                'radio',
+                'checkbox',
+            ])
+            && empty($this->field_options)
+        ) {
+            $this->addError(
+                'field_options',
+                'Minimal harus memiliki satu pilihan.'
+            );
+
             return;
         }
-
         // Menyiapkan data form untuk proses tambah atau ubah.
         $data = [
             'jenis_surat_id' => $this->jenis_surat_id,
