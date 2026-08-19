@@ -47,5 +47,15 @@
             $('#jenisSuratModal').modal('hide');
         });
 
+
+        // Field Surat
+        Livewire.on('show-field-surat-modal', () => {
+            $('#fieldSuratModal').modal('show');
+        });
+
+        Livewire.on('hide-field-surat-modal', () => {
+            $('#fieldSuratModal').modal('hide');
+        });
+
     });
 </script>

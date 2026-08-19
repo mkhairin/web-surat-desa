@@ -48,8 +48,7 @@ class Form extends Component
     {
         $this->resetForm();
         $this->fieldSurat = null;
-
-        $this->dispatch('show-field-surat-form');
+        $this->dispatch('show-field-surat-modal');
     }
 
     // Membuka form dengan data field surat yang akan diedit.
@@ -59,7 +58,7 @@ class Form extends Component
         // Mengambil ID field surat dari event dan mencari datanya.
         $this->fieldSurat = FieldSuratModel::findOrFail($id);
         $this->fillForm();
-        $this->dispatch('show-field-surat-form');
+        $this->dispatch('show-field-surat-modal');
     }
 
     // Memvalidasi dan menyimpan data field surat.
@@ -107,7 +106,7 @@ class Form extends Component
             session()->flash('success', 'Field Surat created successfully.');
         }
 
-        $this->dispatch('hide-field-surat-form');
+        $this->dispatch('hide-field-surat-modal');
         $this->dispatch('field-surat-saved');
         $this->resetForm();
         session()->flash('success', $this->fieldSurat ? 'Field Surat updated successfully.' : 'Field Surat created successfully.');

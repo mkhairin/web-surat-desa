@@ -358,6 +358,5 @@
 
 
     {{-- Form --}}
-    {{-- <livewire:field-surat.form /> --}}
-
+    <livewire:field-surat.form />
 </div>
